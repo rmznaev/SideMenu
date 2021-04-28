@@ -16,8 +16,9 @@ class ContainerViewController: UIViewController {
     
     let menuVC = MenuViewController()
     let homeVC = HomeViewController()
+    var navVC: UINavigationController?
     
-    private let menuState: MenuState = .close
+    private var menuState: MenuState = .close
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class ContainerViewController: UIViewController {
         addChild(navVC)
         view.addSubview(navVC.view)
         navVC.didMove(toParent: self)
+        self.navVC = navVC
     }
 }
 
@@ -49,10 +51,25 @@ extension ContainerViewController: HomeViewControllerDelegate {
         print("did tap menu")
         
         switch self.menuState {
-        case .open: break
+        case .open:
             // CLOSE IT
-        case .close: break
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
+                self.navVC?.view.frame.origin.x = 0
+            } completion: { [weak self] done in
+                if done {
+                    self?.menuState = .close
+                }
+            }
+        case .close:
             // OPEN IT
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
+                self.navVC?.view.frame.origin.x = self.homeVC.view.frame.size.width - 100
+            } completion: { [weak self] done in
+                if done {
+                    self?.menuState = .open
+                }
+            }
+
         }
     }
 }
