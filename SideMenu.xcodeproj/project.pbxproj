@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4B931DC2639903B00DDDF5A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B931DB2639903B00DDDF5A /* InfoViewController.swift */; };
 		C4C64A0C263975A2008B4A2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64A0B263975A2008B4A2A /* AppDelegate.swift */; };
 		C4C64A0E263975A2008B4A2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64A0D263975A2008B4A2A /* SceneDelegate.swift */; };
 		C4C64A10263975A2008B4A2A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64A0F263975A2008B4A2A /* ContainerViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4B931DB2639903B00DDDF5A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		C4C64A08263975A2008B4A2A /* SideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C64A0B263975A2008B4A2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4C64A0D263975A2008B4A2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,9 +73,10 @@
 		C4C64A22263978C2008B4A2A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C4C64A2726397AD0008B4A2A /* HomeViewController.swift */,
 				C4C64A0F263975A2008B4A2A /* ContainerViewController.swift */,
+				C4C64A2726397AD0008B4A2A /* HomeViewController.swift */,
 				C4C64A2326397ABC008B4A2A /* MenuViewController.swift */,
+				C4B931DB2639903B00DDDF5A /* InfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				C4C64A10263975A2008B4A2A /* ContainerViewController.swift in Sources */,
 				C4C64A0C263975A2008B4A2A /* AppDelegate.swift in Sources */,
 				C4C64A0E263975A2008B4A2A /* SceneDelegate.swift in Sources */,
+				C4B931DC2639903B00DDDF5A /* InfoViewController.swift in Sources */,
 				C4C64A2426397ABC008B4A2A /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

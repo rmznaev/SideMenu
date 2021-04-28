@@ -18,6 +18,8 @@ class ContainerViewController: UIViewController {
     let homeVC = HomeViewController()
     var navVC: UINavigationController?
     
+    lazy var infoVC = InfoViewController()
+    
     private var menuState: MenuState = .close
 
     override func viewDidLoad() {
@@ -31,6 +33,7 @@ class ContainerViewController: UIViewController {
 
     private func addChildVCs() {
         // Menu
+        menuVC.delegate = self
         addChild(menuVC)
         view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
@@ -47,9 +50,10 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController: HomeViewControllerDelegate {
     func didTapMenuButton() {
-        // Animating menu goes here
-        print("did tap menu")
-        
+        toggleMenu(completion: nil)
+    }
+    
+    func toggleMenu(completion: (() -> Void)?) {
         switch self.menuState {
         case .open:
             // CLOSE IT
@@ -58,6 +62,9 @@ extension ContainerViewController: HomeViewControllerDelegate {
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .close
+                    DispatchQueue.main.async {
+                        completion?()
+                    }
                 }
             }
         case .close:
@@ -71,5 +78,38 @@ extension ContainerViewController: HomeViewControllerDelegate {
             }
 
         }
+    }
+}
+
+extension ContainerViewController: MenuViewControllerDelegate {
+    func didSelect(menuItem: MenuViewController.MenuOptions) {
+        // close side menu & then navigate another vc
+        toggleMenu(completion: nil)
+        switch menuItem {
+        case .home:
+            self.goHome()
+        case .info:
+            self.goInfo()
+        case .appRating:
+            break
+        case .shareApp:
+            break
+        case .settings:
+            break
+        }
+    }
+    
+    private func goHome() {
+        infoVC.view.removeFromSuperview()
+        infoVC.didMove(toParent: self)
+        homeVC.title = "Home"
+    }
+    
+    private func goInfo() {
+        homeVC.addChild(infoVC)
+        homeVC.view.addSubview(infoVC.view)
+        infoVC.view.frame = view.frame
+        infoVC.didMove(toParent: homeVC)
+        homeVC.title = infoVC.title
     }
 }
